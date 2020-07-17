@@ -50,19 +50,22 @@ async function getProjects() {
         for (var i=0; i<projects.length;i++) {
             
             // Only publish messages for active projects
-            if (projects[i]["metadata"]["lifecycleState"] === config.ACTIVE)  {   
-                // Construct a Pub/Sub message 
-                console.log(`About to send Pub/Sub message ${projects[i]}}`);
-                const pubsubMessage = {
-                        "token": config.METRIC_EXPORT_PUBSUB_VERIFICATION_TOKEN,
-                        "project_id": projects[i]["id"],
-                        "end_time": endTimeStr
-                }
+            if (projects[i]["metadata"]["lifecycleState"] === config.ACTIVE)  {
+                if (("REQUIRED_PROJECTS" in config) == false ||
+                    config.REQUIRED_PROJECTS.indexOf(projects[i]["id"]) != -1) {
+                    // Construct a Pub/Sub message 
+                    console.log(`About to send Pub/Sub message ${projects[i]["id"]}`);
+                    const pubsubMessage = {
+                            "token": config.METRIC_EXPORT_PUBSUB_VERIFICATION_TOKEN,
+                            "project_id": projects[i]["id"],
+                            "end_time": endTimeStr
+                    }
 
-                // Send the Pub/Sub message 
-                const dataBuffer = Buffer.from(JSON.stringify(pubsubMessage));
-                const messageId = await pubsub.topic(config.PROJECTS_TOPIC).publish(dataBuffer);
-                console.log(`Published pubsub messageId: ${messageId} for project: ${projects[i]["id"]}, message ${JSON.stringify(pubsubMessage)}.`);
+                    // Send the Pub/Sub message 
+                    const dataBuffer = Buffer.from(JSON.stringify(pubsubMessage));
+                    const messageId = await pubsub.topic(config.PROJECTS_TOPIC).publish(dataBuffer);
+                    console.log(`Published pubsub messageId: ${messageId} for project: ${projects[i]["id"]}, message ${JSON.stringify(pubsubMessage)}.`);
+                }
             } 
 
         }

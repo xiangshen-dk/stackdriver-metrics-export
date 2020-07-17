@@ -13,7 +13,7 @@ cd stackdriver-metrics-export
 gcloud services enable compute.googleapis.com \
     cloudscheduler.googleapis.com \
     cloudfunctions.googleapis.com \
-    cloudresourcemanager.googleapis.com \
+    cloudresourcemanager.googleapis.com
 ```
 3. Set your PROJECT_ID variable, by replacing [YOUR_PROJECT_ID] with your GCP project id
 ```sh
