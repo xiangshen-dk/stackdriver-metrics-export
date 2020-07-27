@@ -1,0 +1,79 @@
+[
+    {
+        "mode": "NULLABLE",
+        "name": "project_id",
+        "type": "STRING"
+    },
+    {
+        "mode": "NULLABLE",
+        "name": "service",
+        "type": "STRING"
+    },
+    {
+        "mode": "NULLABLE",
+        "name": "name",
+        "type": "STRING"
+    },
+    {
+        "mode": "NULLABLE",
+        "name": "description",
+        "type": "STRING"
+    },
+    {
+        "mode": "NULLABLE",
+        "name": "defaultLimit",
+        "type": "STRING"
+    },
+    {
+        "mode": "NULLABLE",
+        "name": "maxLimit",
+        "type": "STRING"
+    },
+    {
+        "mode": "NULLABLE",
+        "name": "freeTier",
+        "type": "STRING"
+    },
+    {
+        "mode": "NULLABLE",
+        "name": "duration",
+        "type": "STRING"
+    },
+    {
+        "mode": "NULLABLE",
+        "name": "metric",
+        "type": "STRING"
+    },
+    {
+        "mode": "NULLABLE",
+        "name": "unit",
+        "type": "STRING"
+    },
+    {
+        "mode": "NULLABLE",
+        "name": "displayName",
+        "type": "STRING"
+    },
+    {
+        "mode": "NULLABLE",
+        "name": "update_time",
+        "type": "TIMESTAMP"
+    },
+    {
+        "mode": "REPEATED",
+        "name": "values",
+        "type": "RECORD",
+        "fields": [
+            {
+                "name": "key",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "value",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            }
+        ]
+    }
+]

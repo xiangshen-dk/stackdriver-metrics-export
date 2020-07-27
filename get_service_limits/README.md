@@ -3,7 +3,7 @@
 
 1. Create the BigQuery tables. Assuming the datasets has already been created.
 ```
-bq mk --table metric_export.service_limits  ./bigquery_schemas/bigquery_schema_service_limits_table.json
+bq mk --table metric_export.service_limits  ../bigquery_schemas/bigquery_schema_service_limits_table.json
 ```
 
 
